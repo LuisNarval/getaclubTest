@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 1689069706892454913}
   - component: {fileID: 1689069706891488961}
   m_Layer: 0
-  m_Name: WheelrearLeft
+  m_Name: WheelRearLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -368,6 +368,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1689069707135992325}
   - component: {fileID: 1689069707135992345}
+  - component: {fileID: 6232968846338402269}
+  - component: {fileID: 4018582534752761556}
   m_Layer: 2
   m_Name: KartPlayer
   m_TagString: Player
@@ -410,6 +412,45 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6232968846338402269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689069707135992351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e873f457b18f0a4bb3fb4436ce2d0b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motorForce: 10000
+  breakeForce: 3000
+  maxSteerAngle: 30
+  frontLeftWheelCollider: {fileID: 2444249292046736431}
+  frontRightWheelCollider: {fileID: 2444249292046736428}
+  rearLeftWheelCollider: {fileID: 2444249292046736417}
+  rearRightWheelCollider: {fileID: 2444249292046736430}
+  frontLeftWheelTransform: {fileID: 1689069706889587759}
+  frontRightWheelTransform: {fileID: 1689069706889587753}
+  rearLeftWheelTransform: {fileID: 1689069706889587755}
+  rearRightWheelTransform: {fileID: 1689069706889587765}
+--- !u!114 &4018582534752761556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689069707135992351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cda1d6d1b24ed24f9dee56c71ae36ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radious: 0.05
+  rb: {fileID: 1689069707135992345}
+  CenterTransform: {fileID: 1689069707171133594}
+  _CenterOfMass: {x: 0, y: -0.561, z: -0.09}
 --- !u!1 &1689069707171133595
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1689069707212923981}
   m_Layer: 0
-  m_Name: WheelCast
+  m_Name: RL_WheelCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -517,7 +558,7 @@ GameObject:
   - component: {fileID: 1689069707428967369}
   - component: {fileID: 2444249292046736417}
   m_Layer: 13
-  m_Name: Wheel Collider Representation
+  m_Name: RearLeft_Wheel Collider Representation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,7 +585,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689069707428967373}
-  m_Material: {fileID: 13400000, guid: 83f0e1b2590734b80bda8c5dcda941da, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -568,17 +609,17 @@ WheelCollider:
   m_Mass: 1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
-    m_Stiffness: 0
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 2
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 1
+    m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
-    m_Stiffness: 0
+    m_ExtremumSlip: 0.5
+    m_ExtremumValue: 0.65
+    m_AsymptoteSlip: 1
+    m_AsymptoteValue: 0.5
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!1 &1689069707593804791
 GameObject:
@@ -592,7 +633,7 @@ GameObject:
   - component: {fileID: 1689069707593804787}
   - component: {fileID: 2444249292046736428}
   m_Layer: 13
-  m_Name: Wheel Collider Representation
+  m_Name: FrontRight_Wheel Collider Representation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -619,7 +660,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689069707593804791}
-  m_Material: {fileID: 13400000, guid: 83f0e1b2590734b80bda8c5dcda941da, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -643,17 +684,17 @@ WheelCollider:
   m_Mass: 1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
-    m_Stiffness: 0
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 2
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 1
+    m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
-    m_Stiffness: 0
+    m_ExtremumSlip: 0.5
+    m_ExtremumValue: 0.65
+    m_AsymptoteSlip: 1
+    m_AsymptoteValue: 0.5
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!1 &1689069707958189028
 GameObject:
@@ -665,7 +706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1689069707958189031}
   m_Layer: 0
-  m_Name: WheelCast
+  m_Name: RR_WheelCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1093,7 +1134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1689069708312177621}
   m_Layer: 0
-  m_Name: WheelCast
+  m_Name: FL_WheelCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1126,7 +1167,7 @@ GameObject:
   - component: {fileID: 1689069708321505677}
   - component: {fileID: 2444249292046736431}
   m_Layer: 13
-  m_Name: Wheel Collider Representation
+  m_Name: FrontLeft_Wheel Collider Representation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1153,7 +1194,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689069708321505665}
-  m_Material: {fileID: 13400000, guid: 83f0e1b2590734b80bda8c5dcda941da, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1177,17 +1218,17 @@ WheelCollider:
   m_Mass: 1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
-    m_Stiffness: 0
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 2
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 1
+    m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
-    m_Stiffness: 0
+    m_ExtremumSlip: 0.5
+    m_ExtremumValue: 0.65
+    m_AsymptoteSlip: 1
+    m_AsymptoteValue: 0.5
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!1 &1689069708538051716
 GameObject:
@@ -1201,7 +1242,7 @@ GameObject:
   - component: {fileID: 1689069708538051712}
   - component: {fileID: 2444249292046736430}
   m_Layer: 13
-  m_Name: Wheel Collider Representation
+  m_Name: RearRight_Wheel Collider Representation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1228,7 +1269,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689069708538051716}
-  m_Material: {fileID: 13400000, guid: 83f0e1b2590734b80bda8c5dcda941da, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1252,17 +1293,17 @@ WheelCollider:
   m_Mass: 1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
-    m_Stiffness: 0
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 2
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 1
+    m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
-    m_Stiffness: 0
+    m_ExtremumSlip: 0.5
+    m_ExtremumValue: 0.65
+    m_AsymptoteSlip: 1
+    m_AsymptoteValue: 0.5
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!1 &1689069708577282184
 GameObject:
@@ -1274,7 +1315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1689069708577282187}
   m_Layer: 0
-  m_Name: WheelCast
+  m_Name: FR_WheelCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
