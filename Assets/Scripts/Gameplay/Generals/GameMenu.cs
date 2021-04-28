@@ -18,6 +18,12 @@ public class GameMenu : MonoBehaviour
         StartCoroutine(FadeIn());
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+            Restart();
+    }
+
     public void Continue()
     {
         PlayerPrefs.SetString("NEXTSCENE", "MainMenu");
