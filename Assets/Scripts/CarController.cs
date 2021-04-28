@@ -20,6 +20,11 @@ public class CarController : MonoBehaviour
     [SerializeField] private float breakeForce;
     [SerializeField] private float maxSteerAngle;
 
+    [SerializeField] private float Impulse = 10.0f;
+    [SerializeField] private float SpeedUpTime = 2.0f;
+    [SerializeField] private float SlideTime = 3.0f;
+
+
     [Header("REFERENCE")]
     [SerializeField] private WheelCollider frontLeftWheelCollider;
     [SerializeField] private WheelCollider frontRightWheelCollider;
@@ -30,9 +35,10 @@ public class CarController : MonoBehaviour
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
 
+    [SerializeField] ParticleSystem[] SpeedParticles;
+    [SerializeField] ParticleSystem SmokeParticle;
     [SerializeField] private Rigidbody Body;
     [SerializeField] private HUD Hud;
-
 
     private void FixedUpdate()
     {
@@ -43,9 +49,6 @@ public class CarController : MonoBehaviour
 
         UpdateHUD();
     }
-
-
-
 
     void GetInput()
     {
@@ -60,6 +63,9 @@ public class CarController : MonoBehaviour
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
         //currentBreakForce = isBreaking ? breakeForce : 0f;
         currentBreakForce = Input.GetAxis(BREAK) * breakeForce;
+
+        if (Input.GetKey(KeyCode.E)) 
+            SpeedUp();
 
         ApplyBreaking();
         
@@ -101,13 +107,38 @@ public class CarController : MonoBehaviour
     }
 
 
-
     void UpdateHUD()
     {
         Hud.updateSpeed(Body.velocity.magnitude);
     }
 
 
+
+    public void SpeedUp()
+    {
+        StopAllCoroutines();
+        StartCoroutine("C_SpeedUp");
+       
+    }
+    IEnumerator C_SpeedUp()
+    {
+        float time = 0.0f;
+
+        SmokeParticle.Stop();
+        for (int i = 0; i < SpeedParticles.Length; i++)
+            SpeedParticles[i].Play();
+        
+        while (time < SpeedUpTime){
+            Body.AddForce(this.transform.forward * Impulse, ForceMode.Acceleration);
+            time += Time.deltaTime;
+            Debug.Log("Speeding Up");
+            yield return new WaitForEndOfFrame();
+        }
+
+        SmokeParticle.Play();
+        for (int i = 0; i < SpeedParticles.Length; i++)
+            SpeedParticles[i].Stop();
+    }
 
 
 }
