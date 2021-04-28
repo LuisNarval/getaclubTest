@@ -26,13 +26,13 @@ public class GameMenu : MonoBehaviour
 
     public void Restart()
     {
-        PlayerPrefs.SetString("NEXTSCENE", "GameMenu");
+        PlayerPrefs.SetString("NEXTSCENE", "Gameplay");
         StartCoroutine(FadeOut());
     }
 
     public void Exit()
     {
-        PlayerPrefs.SetString("NEXTSCENE", "Exit");
+        PlayerPrefs.SetString("NEXTSCENE", "MainMenu");
         StartCoroutine(FadeOut());
     }
 
