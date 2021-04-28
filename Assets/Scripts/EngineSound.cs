@@ -16,7 +16,7 @@ public class EngineSound : MonoBehaviour
     [SerializeField] AudioSource SFX_Engine;
     [SerializeField] Rigidbody Body;
 
-    private void FixedUpdate()
+    private void Update()
     {
         UpdateSFX();   
     }
