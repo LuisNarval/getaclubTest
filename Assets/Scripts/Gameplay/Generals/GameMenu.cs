@@ -11,6 +11,11 @@ public class GameMenu : MonoBehaviour
     [SerializeField] CanvasGroup m_WinScreen;
     [SerializeField] CanvasGroup m_LooseScreen;
     [SerializeField] Text m_Score;
+    [SerializeField] InputField m_InputField;
+    [SerializeField] SetScores m_SetScores;
+    private bool IsGameOver = false;
+    Score CurrentScore;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +25,15 @@ public class GameMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R)&&!IsGameOver)
             Restart();
     }
 
     public void Continue()
     {
         PlayerPrefs.SetString("NEXTSCENE", "MainMenu");
+        CurrentScore.name = m_InputField.text;
+        m_SetScores.AddScore(CurrentScore.time, CurrentScore.name);
         StartCoroutine(FadeOut());
     }
 
@@ -44,11 +51,13 @@ public class GameMenu : MonoBehaviour
 
     public void Show_WinScreen()
     {
+        IsGameOver = true;
         StartCoroutine(ShowScreen(m_WinScreen));
     }
 
     public void Show_LoseScreen()
     {
+        IsGameOver = true;
         StartCoroutine(ShowScreen(m_LooseScreen));
     }
 
@@ -96,11 +105,11 @@ public class GameMenu : MonoBehaviour
         _Canvas.blocksRaycasts = true;
     }
 
-
     public void SetScore(string _TimeString, int _TimeInt)
     {
         m_Score.text = _TimeString;
+        CurrentScore = new Score();
+        CurrentScore.time = _TimeInt;
     }
-
 
 }

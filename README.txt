@@ -8,4 +8,23 @@ Assets:
 *Los modelos y efectos de sonido extras fueron conseguidos en la tienda de Unity
 
 Particulas:
-*Las particulas fueron creadas desde cero para este proyecto.
+*Las particulas fueron creadas desde cero.
+
+
+Controles de Xbox One:
+-Botón A, Frentar
+-Gatillo Derecho, Acelerar
+-Gatillo Izquierdo, Retroceder
+-Joystick Izquierdo, Movimiento 
+
+Controles de teclado:
+-WASD y Flechas, Movimiento
+-Barra espaciadora, Freno
+
+
+Si en algún momento el jugador se atora en la pista, puede reiniciar el juego presionando la teclar R del teclado.
+
+
+Cuando se juega en el editor y se cambia de escena, habrá un problema con la iluminación.
+Este problema no se presenta al reproducir el ejecutable.
+Se recomienda compilar el proyecto.
