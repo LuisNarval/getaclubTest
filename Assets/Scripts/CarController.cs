@@ -35,6 +35,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
 
+    [SerializeField] AudioSource[] SpeedSFX;
     [SerializeField] ParticleSystem[] SpeedParticles;
     [SerializeField] ParticleSystem SmokeParticle;
     [SerializeField] private Rigidbody Body;
@@ -112,6 +113,9 @@ public class CarController : MonoBehaviour
         Hud.updateSpeed(Body.velocity.magnitude);
     }
 
+    
+
+
 
 
     public void SpeedUp()
@@ -127,7 +131,10 @@ public class CarController : MonoBehaviour
         SmokeParticle.Stop();
         for (int i = 0; i < SpeedParticles.Length; i++)
             SpeedParticles[i].Play();
-        
+
+        for (int i = 0; i < SpeedSFX.Length; i++)
+            SpeedSFX[i].Play();
+
         while (time < SpeedUpTime){
             Body.AddForce(this.transform.forward * Impulse, ForceMode.Acceleration);
             time += Time.deltaTime;
