@@ -6,6 +6,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] int Seconds = 70;
     [SerializeField] HUD Hud;
+
     private void Start()
     {
         StartTimer();
@@ -26,6 +27,14 @@ public class Timer : MonoBehaviour
         }
 
     }
+
+
+    public void addTime(int _seconds)
+    {
+        Seconds += _seconds;
+        this.GetComponent<AudioSource>().Play();
+    }
+
 
 
 }

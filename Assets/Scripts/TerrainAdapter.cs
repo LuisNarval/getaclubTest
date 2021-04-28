@@ -8,6 +8,7 @@ public class TerrainAdapter : MonoBehaviour
     [SerializeField] float SlideTime = 3.0f;
     [SerializeField] float BreakTime = 1.0f;
     [SerializeField] float BreakForce = 3000.0f;
+    [SerializeField] AudioSource SFX_Slide;
 
     void ChangeStiffnes(WheelCollider _wheel, float _forwardValue, float _sideValue)
     {
@@ -37,6 +38,7 @@ public class TerrainAdapter : MonoBehaviour
     }
     IEnumerator C_Slide()
     {
+        SFX_Slide.Play();
         for (int i = 0; i < Wheels.Length; i++)
             ChangeStiffnes(Wheels[i], 5.0f, 0.2f);
         
