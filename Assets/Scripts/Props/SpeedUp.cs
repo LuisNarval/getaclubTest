@@ -21,15 +21,10 @@ public class SpeedUp : MonoBehaviour
         m_Material.SetTextureOffset ("_MainTex", new Vector2(-offset,0.0f));
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.CompareTag("Player")){
-            Debug.Log("PLAYER DETECTED: " + other.name);
-
-            other.GetComponentInParent<CarController>().SpeedUp();
-        }
+        if (other.CompareTag("Player"))
+            other.GetComponentInParent<CarController>().SpeedUp();   
     }
 
 }

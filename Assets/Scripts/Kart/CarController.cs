@@ -138,7 +138,6 @@ public class CarController : MonoBehaviour
         while (time < SpeedUpTime){
             Body.AddForce(this.transform.forward * Impulse, ForceMode.Acceleration);
             time += Time.deltaTime;
-            Debug.Log("Speeding Up");
             yield return new WaitForEndOfFrame();
         }
 
